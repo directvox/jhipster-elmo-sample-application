@@ -1,0 +1,141 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-demande-de-service-heading" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.home.createOrEditLabel">Create or edit a Demande De Service</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.statut" for="field_statut">Statut</label>
+                    <select class="form-control" name="statut" formControlName="statut" id="field_statut">
+                        <option value="ENCOURS">{{'jhipsterElmoSampleApplicationApp.StatutDemande.ENCOURS' | translate}}</option>
+                        <option value="TERMINE">{{'jhipsterElmoSampleApplicationApp.StatutDemande.TERMINE' | translate}}</option>
+                        <option value="REFUSE">{{'jhipsterElmoSampleApplicationApp.StatutDemande.REFUSE' | translate}}</option>
+                        <option value="ATTENTE">{{'jhipsterElmoSampleApplicationApp.StatutDemande.ATTENTE' | translate}}</option>
+                        <option value="ANNULE">{{'jhipsterElmoSampleApplicationApp.StatutDemande.ANNULE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.dateCreationDemande" for="field_dateCreationDemande">Date Creation Demande</label>
+                    <div class="d-flex">
+                        <input id="field_dateCreationDemande" type="datetime-local" class="form-control" name="dateCreationDemande" formControlName="dateCreationDemande" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dateCreationDemande').invalid && (editForm.get('dateCreationDemande').dirty || editForm.get('dateCreationDemande').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateCreationDemande').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dateCreationDemande').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.lanque" for="field_lanque">Lanque</label>
+                    <select class="form-control" name="lanque" formControlName="lanque" id="field_lanque">
+                        <option value="FRANCAIS">{{'jhipsterElmoSampleApplicationApp.Language.FRANCAIS' | translate}}</option>
+                        <option value="ANGLAIS">{{'jhipsterElmoSampleApplicationApp.Language.ANGLAIS' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('lanque').invalid && (editForm.get('lanque').dirty || editForm.get('lanque').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lanque').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.priorite" for="field_priorite">Priorite</label>
+                    <select class="form-control" name="priorite" formControlName="priorite" id="field_priorite">
+                        <option value="URGENT">{{'jhipsterElmoSampleApplicationApp.Priorite.URGENT' | translate}}</option>
+                        <option value="IMPORTANT">{{'jhipsterElmoSampleApplicationApp.Priorite.IMPORTANT' | translate}}</option>
+                        <option value="NORMAL">{{'jhipsterElmoSampleApplicationApp.Priorite.NORMAL' | translate}}</option>
+                        <option value="INCONNU">{{'jhipsterElmoSampleApplicationApp.Priorite.INCONNU' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('priorite').invalid && (editForm.get('priorite').dirty || editForm.get('priorite').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('priorite').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.modalite" for="field_modalite">Modalite</label>
+                    <select class="form-control" name="modalite" formControlName="modalite" id="field_modalite">
+                        <option value="DIFERE">{{'jhipsterElmoSampleApplicationApp.Modalite.DIFERE' | translate}}</option>
+                        <option value="REEL">{{'jhipsterElmoSampleApplicationApp.Modalite.REEL' | translate}}</option>
+                        <option value="REEL_AVEC_PATIENT">{{'jhipsterElmoSampleApplicationApp.Modalite.REEL_AVEC_PATIENT' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('modalite').invalid && (editForm.get('modalite').dirty || editForm.get('modalite').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('modalite').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.typeActivite" for="field_typeActivite">Type Activite</label>
+                    <select class="form-control" name="typeActivite" formControlName="typeActivite" id="field_typeActivite">
+                        <option value="DISCUSSION">{{'jhipsterElmoSampleApplicationApp.TypeActivite.DISCUSSION' | translate}}</option>
+                        <option value="DEMANDE_OPINION">{{'jhipsterElmoSampleApplicationApp.TypeActivite.DEMANDE_OPINION' | translate}}</option>
+                        <option value="TELECONSULTATION">{{'jhipsterElmoSampleApplicationApp.TypeActivite.TELECONSULTATION' | translate}}</option>
+                        <option value="DEMANDE_DE_TRANSFERT">{{'jhipsterElmoSampleApplicationApp.TypeActivite.DEMANDE_DE_TRANSFERT' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('typeActivite').invalid && (editForm.get('typeActivite').dirty || editForm.get('typeActivite').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeActivite').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.patient" for="field_patient">Patient</label>
+                    <select class="form-control" id="field_patient" name="patient" formControlName="patient">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id === editForm.get('patient').value?.id ? editForm.get('patient').value : patientOption" *ngFor="let patientOption of patients; trackBy: trackPatientById">{{patientOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.destinataire" for="field_destinataire">Destinataire</label>
+                    <select class="form-control" id="field_destinataire" name="destinataire" formControlName="destinataire">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="destinataireOption.id === editForm.get('destinataire').value?.id ? editForm.get('destinataire').value : destinataireOption" *ngFor="let destinataireOption of destinataires; trackBy: trackDestinataireById">{{destinataireOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.specialiteClinique" for="field_specialiteClinique">Specialite Clinique</label>
+                    <select class="form-control" id="field_specialiteClinique" name="specialiteClinique" formControlName="specialiteClinique">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="specCliniqueOption.id === editForm.get('specialiteClinique').value?.id ? editForm.get('specialiteClinique').value : specCliniqueOption" *ngFor="let specCliniqueOption of specialitecliniques; trackBy: trackSpecCliniqueById">{{specCliniqueOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.ensembre" for="field_ensembre">Ensembre</label>
+                    <select class="form-control" id="field_ensembre" name="ensembre" formControlName="ensembre">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="demandeDeServiceOption.id === editForm.get('ensembre').value?.id ? editForm.get('ensembre').value : demandeDeServiceOption" *ngFor="let demandeDeServiceOption of demandedeservices; trackBy: trackDemandeDeServiceById">{{demandeDeServiceOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.formulaireEvaluation" for="field_formulaireEvaluations">Formulaire Evaluation</label>
+                    <select class="form-control" id="field_formulaireEvaluations" multiple name="formulaireEvaluations" formControlName="formulaireEvaluations">
+                        <option [ngValue]="getSelected(editForm.get('formulaireEvaluations').value, formulaireEvaluationOption)" *ngFor="let formulaireEvaluationOption of formulaireevaluations; trackBy: trackFormulaireEvaluationById">{{formulaireEvaluationOption.idFormulaire}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

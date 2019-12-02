@@ -1,0 +1,100 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-consentement-heading" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.home.createOrEditLabel">Create or edit a Consentement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.typeConsentement" for="field_typeConsentement">Type Consentement</label>
+                    <select class="form-control" name="typeConsentement" formControlName="typeConsentement" id="field_typeConsentement">
+                        <option value="DEMANDE">{{'jhipsterElmoSampleApplicationApp.TypeConsentement.DEMANDE' | translate}}</option>
+                        <option value="DSQ">{{'jhipsterElmoSampleApplicationApp.TypeConsentement.DSQ' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('typeConsentement').invalid && (editForm.get('typeConsentement').dirty || editForm.get('typeConsentement').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('typeConsentement').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateConsentement" for="field_dateConsentement">Date Consentement</label>
+                    <div class="d-flex">
+                        <input id="field_dateConsentement" type="datetime-local" class="form-control" name="dateConsentement" formControlName="dateConsentement" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dateConsentement').invalid && (editForm.get('dateConsentement').dirty || editForm.get('dateConsentement').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dateConsentement').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dateConsentement').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementRecherche" for="field_consentementRecherche">Consentement Recherche</label>
+                    <input type="checkbox" class="form-control" name="consentementRecherche" id="field_consentementRecherche"
+                           formControlName="consentementRecherche"/>
+                    <div *ngIf="editForm.get('consentementRecherche').invalid && (editForm.get('consentementRecherche').dirty || editForm.get('consentementRecherche').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('consentementRecherche').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementPDF" for="field_consentementPDF">Consentement PDF</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('consentementPDFContentType').value + ';base64,' + editForm.get('consentementPDF').value" style="max-height: 100px;" *ngIf="editForm.get('consentementPDF').value" alt="consentement image"/>
+                        <div *ngIf="editForm.get('consentementPDF').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('consentementPDFContentType').value}}, {{byteSize(editForm.get('consentementPDF').value)}}</span>
+                            <button type="button" (click)="clearInputImage('consentementPDF', 'consentementPDFContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_consentementPDF" (change)="setFileData($event, 'consentementPDF', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="consentementPDF" id="field_consentementPDF"
+                           formControlName="consentementPDF"/>
+                    <input type="hidden" class="form-control" name="consentementPDFContentType" id="field_consentementPDFContentType"
+                           formControlName="consentementPDFContentType" />
+                    <div *ngIf="editForm.get('consentementPDF').invalid && (editForm.get('consentementPDF').dirty || editForm.get('consentementPDF').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('consentementPDF').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateSupprimerConsentement" for="field_dateSupprimerConsentement">Date Supprimer Consentement</label>
+                    <div class="d-flex">
+                        <input id="field_dateSupprimerConsentement" type="datetime-local" class="form-control" name="dateSupprimerConsentement" formControlName="dateSupprimerConsentement" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.patient" for="field_patient">Patient</label>
+                    <select class="form-control" id="field_patient" name="patient" formControlName="patient">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id === editForm.get('patient').value?.id ? editForm.get('patient').value : patientOption" *ngFor="let patientOption of patients; trackBy: trackPatientById">{{patientOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "attachementDemandeDeService": {
+      "home": {
+        "title": "AttachementDemandeDeServices",
+        "createLabel": "Créer un nouveau Attachement Demande De Service",
+        "createOrEditLabel": "Créer ou éditer un Attachement Demande De Service",
+        "notFound": "Aucun Attachement Demande De Service trouvé"
+      },
+      "created": "Un nouveau Attachement Demande De Service a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Attachement Demande De Service avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Attachement Demande De Service avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Attachement Demande De Service {{ id }} ?"
+      },
+      "detail": {
+        "title": "Attachement Demande De Service"
+      },
+      "nom": "Nom",
+      "fichier": "Fichier",
+      "refExterne": "Ref Externe",
+      "note": "Note",
+      "ref": "Ref"
+    }
+  }
+}

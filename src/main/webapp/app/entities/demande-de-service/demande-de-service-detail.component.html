@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="demandeDeService">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.detail.title">Demande De Service</span> {{demandeDeService.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.statut">Statut</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.StatutDemande.' + demandeDeService.statut}}">{{demandeDeService.statut}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.dateCreationDemande">Date Creation Demande</span></dt>
+                <dd>
+                    <span>{{demandeDeService.dateCreationDemande}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.lanque">Lanque</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Language.' + demandeDeService.lanque}}">{{demandeDeService.lanque}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.priorite">Priorite</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Priorite.' + demandeDeService.priorite}}">{{demandeDeService.priorite}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.modalite">Modalite</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Modalite.' + demandeDeService.modalite}}">{{demandeDeService.modalite}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.typeActivite">Type Activite</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.TypeActivite.' + demandeDeService.typeActivite}}">{{demandeDeService.typeActivite}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.patient">Patient</span></dt>
+                <dd>
+                    <div *ngIf="demandeDeService.patient">
+                        <a [routerLink]="['/patient', demandeDeService.patient?.id, 'view']">{{demandeDeService.patient?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.destinataire">Destinataire</span></dt>
+                <dd>
+                    <div *ngIf="demandeDeService.destinataire">
+                        <a [routerLink]="['/destinataire', demandeDeService.destinataire?.id, 'view']">{{demandeDeService.destinataire?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.specialiteClinique">Specialite Clinique</span></dt>
+                <dd>
+                    <div *ngIf="demandeDeService.specialiteClinique">
+                        <a [routerLink]="['/spec-clinique', demandeDeService.specialiteClinique?.id, 'view']">{{demandeDeService.specialiteClinique?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.ensembre">Ensembre</span></dt>
+                <dd>
+                    <div *ngIf="demandeDeService.ensembre">
+                        <a [routerLink]="['/demande-de-service', demandeDeService.ensembre?.id, 'view']">{{demandeDeService.ensembre?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.formulaireEvaluation">Formulaire Evaluation</span></dt>
+                <dd>
+                    <span *ngFor="let formulaireEvaluation of demandeDeService.formulaireEvaluations; let last = last">
+                        <a [routerLink]="['/formulaire-evaluation', formulaireEvaluation?.id, 'view' ]">{{formulaireEvaluation.idFormulaire}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/demande-de-service', demandeDeService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

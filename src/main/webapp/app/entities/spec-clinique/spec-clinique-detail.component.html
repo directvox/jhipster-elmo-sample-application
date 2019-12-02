@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="specClinique">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.specClinique.detail.title">Spec Clinique</span> {{specClinique.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.specClinique.nomSpecialiteClinique">Nom Specialite Clinique</span></dt>
+                <dd>
+                    <span>{{specClinique.nomSpecialiteClinique}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.specClinique.specialite">Specialite</span></dt>
+                <dd>
+                    <div *ngIf="specClinique.specialite">
+                        <a [routerLink]="['/formulaire-evaluation', specClinique.specialite?.id, 'view']">{{specClinique.specialite?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/spec-clinique', specClinique.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

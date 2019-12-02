@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-formulaire-consentement-heading" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.home.createOrEditLabel">Create or edit a Formulaire Consentement</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.idFormulaire" for="field_idFormulaire">Id Formulaire</label>
+                    <input type="text" class="form-control" name="idFormulaire" id="field_idFormulaire"
+                           formControlName="idFormulaire"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.nomFormulaire" for="field_nomFormulaire">Nom Formulaire</label>
+                    <input type="text" class="form-control" name="nomFormulaire" id="field_nomFormulaire"
+                           formControlName="nomFormulaire"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.dateFormulaire" for="field_dateFormulaire">Date Formulaire</label>
+                    <input type="text" class="form-control" name="dateFormulaire" id="field_dateFormulaire"
+                           formControlName="dateFormulaire"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.actif" for="field_actif">Actif</label>
+                    <input type="checkbox" class="form-control" name="actif" id="field_actif"
+                           formControlName="actif"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementTexte" for="field_formulaireConsentementTexte">Formulaire Consentement Texte</label>
+                    <textarea class="form-control" name="formulaireConsentementTexte" id="field_formulaireConsentementTexte"
+                              formControlName="formulaireConsentementTexte"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementPDF" for="field_formulaireConsentementPDF">Formulaire Consentement PDF</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('formulaireConsentementPDFContentType').value + ';base64,' + editForm.get('formulaireConsentementPDF').value" style="max-height: 100px;" *ngIf="editForm.get('formulaireConsentementPDF').value" alt="formulaireConsentement image"/>
+                        <div *ngIf="editForm.get('formulaireConsentementPDF').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('formulaireConsentementPDFContentType').value}}, {{byteSize(editForm.get('formulaireConsentementPDF').value)}}</span>
+                            <button type="button" (click)="clearInputImage('formulaireConsentementPDF', 'formulaireConsentementPDFContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_formulaireConsentementPDF" (change)="setFileData($event, 'formulaireConsentementPDF', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="formulaireConsentementPDF" id="field_formulaireConsentementPDF"
+                           formControlName="formulaireConsentementPDF"/>
+                    <input type="hidden" class="form-control" name="formulaireConsentementPDFContentType" id="field_formulaireConsentementPDFContentType"
+                           formControlName="formulaireConsentementPDFContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementURL" for="field_formulaireConsentementURL">Formulaire Consentement URL</label>
+                    <input type="text" class="form-control" name="formulaireConsentementURL" id="field_formulaireConsentementURL"
+                           formControlName="formulaireConsentementURL"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.consentement" for="field_consentement">Consentement</label>
+                    <select class="form-control" id="field_consentement" name="consentement" formControlName="consentement">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="consentementOption.id === editForm.get('consentement').value?.id ? editForm.get('consentement').value : consentementOption" *ngFor="let consentementOption of consentements; trackBy: trackConsentementById">{{consentementOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

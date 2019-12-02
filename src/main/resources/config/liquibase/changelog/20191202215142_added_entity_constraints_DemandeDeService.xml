@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity DemandeDeService.
+    -->
+    <changeSet id="20191202215142-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="patient_id"
+                                 baseTableName="demande_de_service"
+                                 constraintName="fk_demande_de_service_patient_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patient"/>
+
+        <addForeignKeyConstraint baseColumnNames="destinataire_id"
+                                 baseTableName="demande_de_service"
+                                 constraintName="fk_demande_de_service_destinataire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="destinataire"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialite_clinique_id"
+                                 baseTableName="demande_de_service"
+                                 constraintName="fk_demande_de_service_specialite_clinique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="spec_clinique"/>
+
+        <addForeignKeyConstraint baseColumnNames="ensembre_id"
+                                 baseTableName="demande_de_service"
+                                 constraintName="fk_demande_de_service_ensembre_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_de_service"/>
+
+        <addForeignKeyConstraint baseColumnNames="demande_de_service_id"
+                                 baseTableName="demande_de_service_formulaire_evaluation"
+                                 constraintName="demande_de_service_formulaire_e_demande_de_service_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="demande_de_service"/>
+
+        <addForeignKeyConstraint baseColumnNames="formulaire_evaluation_id"
+                                 baseTableName="demande_de_service_formulaire_evaluation"
+                                 constraintName="demande_de_service_formulaire_e_formulaire_evaluation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="formulaire_evaluation"/>
+        
+    </changeSet>
+</databaseChangeLog>

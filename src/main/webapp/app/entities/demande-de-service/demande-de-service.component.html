@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.home.title">Demande De Services</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-demande-de-service" [routerLink]="['/demande-de-service/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.home.createLabel">
+            Create a new Demande De Service
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="demandeDeServices?.length === 0">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.home.notFound">No demandeDeServices found</span>
+    </div>
+    <div class="table-responsive" *ngIf="demandeDeServices?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="statut"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.statut">Statut</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="dateCreationDemande"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.dateCreationDemande">Date Creation Demande</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lanque"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.lanque">Lanque</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="priorite"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.priorite">Priorite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="modalite"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.modalite">Modalite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="typeActivite"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.typeActivite">Type Activite</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="patient.id"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.patient">Patient</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="destinataire.id"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.destinataire">Destinataire</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="specialiteClinique.id"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.specialiteClinique">Specialite Clinique</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="ensembre.id"><span jhiTranslate="jhipsterElmoSampleApplicationApp.demandeDeService.ensembre">Ensembre</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let demandeDeService of demandeDeServices ;trackBy: trackId">
+                <td><a [routerLink]="['/demande-de-service', demandeDeService.id, 'view' ]">{{demandeDeService.id}}</a></td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.StatutDemande.' + demandeDeService.statut}}">{{demandeDeService.statut}}</td>
+                <td>{{demandeDeService.dateCreationDemande | date:'medium'}}</td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Language.' + demandeDeService.lanque}}">{{demandeDeService.lanque}}</td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Priorite.' + demandeDeService.priorite}}">{{demandeDeService.priorite}}</td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.Modalite.' + demandeDeService.modalite}}">{{demandeDeService.modalite}}</td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.TypeActivite.' + demandeDeService.typeActivite}}">{{demandeDeService.typeActivite}}</td>
+                <td>
+                    <div *ngIf="demandeDeService.patient">
+                        <a [routerLink]="['/patient', demandeDeService.patient?.id, 'view' ]" >{{demandeDeService.patient?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="demandeDeService.destinataire">
+                        <a [routerLink]="['/destinataire', demandeDeService.destinataire?.id, 'view' ]" >{{demandeDeService.destinataire?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="demandeDeService.specialiteClinique">
+                        <a [routerLink]="['/spec-clinique', demandeDeService.specialiteClinique?.id, 'view' ]" >{{demandeDeService.specialiteClinique?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="demandeDeService.ensembre">
+                        <a [routerLink]="['/demande-de-service', demandeDeService.ensembre?.id, 'view' ]" >{{demandeDeService.ensembre?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/demande-de-service', demandeDeService.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/demande-de-service', demandeDeService.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(demandeDeService)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

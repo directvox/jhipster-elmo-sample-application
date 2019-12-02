@@ -1,0 +1,55 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireEvaluation.home.title">Formulaire Evaluations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-formulaire-evaluation" [routerLink]="['/formulaire-evaluation/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireEvaluation.home.createLabel">
+            Create a new Formulaire Evaluation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="formulaireEvaluations?.length === 0">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireEvaluation.home.notFound">No formulaireEvaluations found</span>
+    </div>
+    <div class="table-responsive" *ngIf="formulaireEvaluations?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireEvaluation.typeFormulaire">Type Formulaire</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let formulaireEvaluation of formulaireEvaluations ;trackBy: trackId">
+                <td><a [routerLink]="['/formulaire-evaluation', formulaireEvaluation.id, 'view' ]">{{formulaireEvaluation.id}}</a></td>
+                <td>{{formulaireEvaluation.typeFormulaire}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/formulaire-evaluation', formulaireEvaluation.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/formulaire-evaluation', formulaireEvaluation.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(formulaireEvaluation)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.home.title">Attachement Demande De Services</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-attachement-demande-de-service" [routerLink]="['/attachement-demande-de-service/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.home.createLabel">
+            Create a new Attachement Demande De Service
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="attachementDemandeDeServices?.length === 0">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.home.notFound">No attachementDemandeDeServices found</span>
+    </div>
+    <div class="table-responsive" *ngIf="attachementDemandeDeServices?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.nom">Nom</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.fichier">Fichier</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.refExterne">Ref Externe</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.note">Note</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.ref">Ref</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let attachementDemandeDeService of attachementDemandeDeServices ;trackBy: trackId">
+                <td><a [routerLink]="['/attachement-demande-de-service', attachementDemandeDeService.id, 'view' ]">{{attachementDemandeDeService.id}}</a></td>
+                <td>{{attachementDemandeDeService.nom}}</td>
+                <td>
+                    <a *ngIf="attachementDemandeDeService.fichier" (click)="openFile(attachementDemandeDeService.fichierContentType, attachementDemandeDeService.fichier)">
+                        <img [src]="'data:' + attachementDemandeDeService.fichierContentType + ';base64,' + attachementDemandeDeService.fichier" style="max-height: 30px;" alt="attachementDemandeDeService image"/>
+                    </a>
+                    <span *ngIf="attachementDemandeDeService.fichier">{{attachementDemandeDeService.fichierContentType}}, {{byteSize(attachementDemandeDeService.fichier)}}</span>
+                </td>
+                <td>{{attachementDemandeDeService.refExterne}}</td>
+                <td>{{attachementDemandeDeService.note}}</td>
+                <td>
+                    <div *ngIf="attachementDemandeDeService.ref">
+                        <a [routerLink]="['/demande-de-service', attachementDemandeDeService.ref?.id, 'view' ]" >{{attachementDemandeDeService.ref?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/attachement-demande-de-service', attachementDemandeDeService.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/attachement-demande-de-service', attachementDemandeDeService.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(attachementDemandeDeService)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

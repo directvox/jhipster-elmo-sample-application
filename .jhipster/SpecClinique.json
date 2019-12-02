@@ -1,0 +1,39 @@
+{
+    "name": "SpecClinique",
+    "fields": [
+        {
+            "fieldName": "nomSpecialiteClinique",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "formulaireEvaluation",
+            "otherEntityRelationshipName": "specClinique",
+            "relationshipName": "specialite",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "destinataire",
+            "otherEntityRelationshipName": "specClinique",
+            "relationshipName": "destinataire",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191202215141",
+    "entityTableName": "spec_clinique",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

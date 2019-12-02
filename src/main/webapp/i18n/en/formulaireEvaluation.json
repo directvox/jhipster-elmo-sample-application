@@ -1,0 +1,23 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "formulaireEvaluation": {
+      "home": {
+        "title": "Formulaire Evaluations",
+        "createLabel": "Create a new Formulaire Evaluation",
+        "createOrEditLabel": "Create or edit a Formulaire Evaluation",
+        "notFound": "No Formulaire Evaluations found"
+      },
+      "created": "A new Formulaire Evaluation is created with identifier {{ param }}",
+      "updated": "A Formulaire Evaluation is updated with identifier {{ param }}",
+      "deleted": "A Formulaire Evaluation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Formulaire Evaluation {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulaire Evaluation"
+      },
+      "typeFormulaire": "Type Formulaire",
+      "demandeDeService": "Demande De Service"
+    }
+  }
+}

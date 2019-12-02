@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-attachement-demande-de-service-heading" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.home.createOrEditLabel">Create or edit a Attachement Demande De Service</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.fichier" for="field_fichier">Fichier</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('fichierContentType').value + ';base64,' + editForm.get('fichier').value" style="max-height: 100px;" *ngIf="editForm.get('fichier').value" alt="attachementDemandeDeService image"/>
+                        <div *ngIf="editForm.get('fichier').value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{editForm.get('fichierContentType').value}}, {{byteSize(editForm.get('fichier').value)}}</span>
+                            <button type="button" (click)="clearInputImage('fichier', 'fichierContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_fichier" (change)="setFileData($event, 'fichier', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="fichier" id="field_fichier"
+                           formControlName="fichier"/>
+                    <input type="hidden" class="form-control" name="fichierContentType" id="field_fichierContentType"
+                           formControlName="fichierContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.refExterne" for="field_refExterne">Ref Externe</label>
+                    <input type="text" class="form-control" name="refExterne" id="field_refExterne"
+                           formControlName="refExterne"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.note" for="field_note">Note</label>
+                    <textarea class="form-control" name="note" id="field_note"
+                              formControlName="note"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.ref" for="field_ref">Ref</label>
+                    <select class="form-control" id="field_ref" name="ref" formControlName="ref">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="demandeDeServiceOption.id === editForm.get('ref').value?.id ? editForm.get('ref').value : demandeDeServiceOption" *ngFor="let demandeDeServiceOption of refs; trackBy: trackDemandeDeServiceById">{{demandeDeServiceOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

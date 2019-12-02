@@ -1,0 +1,32 @@
+{
+    "name": "ReponseDemandeDeService",
+    "fields": [
+        {
+            "fieldName": "dateReponse",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "demandeDeService",
+            "otherEntityRelationshipName": "reponseDemandeDeService",
+            "relationshipName": "demandeDeService",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191202215150",
+    "entityTableName": "reponse_demande_de_service",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

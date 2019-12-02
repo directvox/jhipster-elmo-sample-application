@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="reponseDemandeDeService">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.reponseDemandeDeService.detail.title">Reponse Demande De Service</span> {{reponseDemandeDeService.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.reponseDemandeDeService.dateReponse">Date Reponse</span></dt>
+                <dd>
+                    <span>{{reponseDemandeDeService.dateReponse}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.reponseDemandeDeService.demandeDeService">Demande De Service</span></dt>
+                <dd>
+                    <div *ngIf="reponseDemandeDeService.demandeDeService">
+                        <a [routerLink]="['/demande-de-service', reponseDemandeDeService.demandeDeService?.id, 'view']">{{reponseDemandeDeService.demandeDeService?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/reponse-demande-de-service', reponseDemandeDeService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

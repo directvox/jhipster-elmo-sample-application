@@ -1,0 +1,55 @@
+{
+    "name": "FormulaireConsentement",
+    "fields": [
+        {
+            "fieldName": "idFormulaire",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nomFormulaire",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateFormulaire",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "actif",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "formulaireConsentementTexte",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "formulaireConsentementPDF",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "formulaireConsentementURL",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "consentement",
+            "otherEntityRelationshipName": "formulaireConsentement",
+            "relationshipName": "consentement",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191202215148",
+    "entityTableName": "formulaire_consentement",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
