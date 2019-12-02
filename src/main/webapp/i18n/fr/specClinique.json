@@ -1,0 +1,24 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "specClinique": {
+      "home": {
+        "title": "SpecCliniques",
+        "createLabel": "Créer un nouveau Spec Clinique",
+        "createOrEditLabel": "Créer ou éditer un Spec Clinique",
+        "notFound": "Aucun Spec Clinique trouvé"
+      },
+      "created": "Un nouveau Spec Clinique a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Spec Clinique avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Spec Clinique avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Spec Clinique {{ id }} ?"
+      },
+      "detail": {
+        "title": "Spec Clinique"
+      },
+      "nomSpecialiteClinique": "Nom Specialite Clinique",
+      "specialite": "Specialite",
+      "destinataire": "Destinataire"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "Priorite": {
+      "null": "",
+      "URGENT": "URGENT",
+      "IMPORTANT": "IMPORTANT",
+      "NORMAL": "NORMAL",
+      "INCONNU": "INCONNU"
+    }
+  }
+}

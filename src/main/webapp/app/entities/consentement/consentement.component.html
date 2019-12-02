@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.home.title">Consentements</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-consentement" [routerLink]="['/consentement/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.home.createLabel">
+            Create a new Consentement
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="consentements?.length === 0">
+        <span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.home.notFound">No consentements found</span>
+    </div>
+    <div class="table-responsive" *ngIf="consentements?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.typeConsentement">Type Consentement</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateConsentement">Date Consentement</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementRecherche">Consentement Recherche</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementPDF">Consentement PDF</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateSupprimerConsentement">Date Supprimer Consentement</span></th>
+            <th scope="col" ><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.patient">Patient</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let consentement of consentements ;trackBy: trackId">
+                <td><a [routerLink]="['/consentement', consentement.id, 'view' ]">{{consentement.id}}</a></td>
+                <td jhiTranslate="{{'jhipsterElmoSampleApplicationApp.TypeConsentement.' + consentement.typeConsentement}}">{{consentement.typeConsentement}}</td>
+                <td>{{consentement.dateConsentement | date:'medium'}}</td>
+                <td>{{consentement.consentementRecherche}}</td>
+                <td>
+                    <a *ngIf="consentement.consentementPDF" (click)="openFile(consentement.consentementPDFContentType, consentement.consentementPDF)">
+                        <img [src]="'data:' + consentement.consentementPDFContentType + ';base64,' + consentement.consentementPDF" style="max-height: 30px;" alt="consentement image"/>
+                    </a>
+                    <span *ngIf="consentement.consentementPDF">{{consentement.consentementPDFContentType}}, {{byteSize(consentement.consentementPDF)}}</span>
+                </td>
+                <td>{{consentement.dateSupprimerConsentement | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="consentement.patient">
+                        <a [routerLink]="['/patient', consentement.patient?.id, 'view' ]" >{{consentement.patient?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/consentement', consentement.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/consentement', consentement.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit" (click)="delete(consentement)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

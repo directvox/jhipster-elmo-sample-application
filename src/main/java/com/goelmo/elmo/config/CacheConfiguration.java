@@ -42,6 +42,20 @@ public class CacheConfiguration {
             createCache(cm, com.goelmo.elmo.domain.User.class.getName());
             createCache(cm, com.goelmo.elmo.domain.Authority.class.getName());
             createCache(cm, com.goelmo.elmo.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.goelmo.elmo.domain.SpecClinique.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.SpecClinique.class.getName() + ".destinataires");
+            createCache(cm, com.goelmo.elmo.domain.DemandeDeService.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.DemandeDeService.class.getName() + ".formulaireEvaluations");
+            createCache(cm, com.goelmo.elmo.domain.AttachementDemandeDeService.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.Patient.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.Destinataire.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.Destinataire.class.getName() + ".specCliniques");
+            createCache(cm, com.goelmo.elmo.domain.Intervenant.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.FormulaireEvaluation.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.FormulaireEvaluation.class.getName() + ".demandeDeServices");
+            createCache(cm, com.goelmo.elmo.domain.FormulaireConsentement.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.Consentement.class.getName());
+            createCache(cm, com.goelmo.elmo.domain.ReponseDemandeDeService.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

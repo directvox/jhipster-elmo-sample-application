@@ -1,0 +1,24 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "destinataire": {
+      "home": {
+        "title": "Destinataires",
+        "createLabel": "Créer un nouveau Destinataire",
+        "createOrEditLabel": "Créer ou éditer un Destinataire",
+        "notFound": "Aucun Destinataire trouvé"
+      },
+      "created": "Un nouveau Destinataire a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Destinataire avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Destinataire avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Destinataire {{ id }} ?"
+      },
+      "detail": {
+        "title": "Destinataire"
+      },
+      "nomDestinataire": "Nom Destinataire",
+      "ensembreDestinataire": "Ensembre Destinataire",
+      "specClinique": "Spec Clinique"
+    }
+  }
+}

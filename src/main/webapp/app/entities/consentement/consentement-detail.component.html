@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="consentement">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.detail.title">Consentement</span> {{consentement.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.typeConsentement">Type Consentement</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'jhipsterElmoSampleApplicationApp.TypeConsentement.' + consentement.typeConsentement}}">{{consentement.typeConsentement}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateConsentement">Date Consentement</span></dt>
+                <dd>
+                    <span>{{consentement.dateConsentement}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementRecherche">Consentement Recherche</span></dt>
+                <dd>
+                    <span>{{consentement.consentementRecherche}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.consentementPDF">Consentement PDF</span></dt>
+                <dd>
+                    <div *ngIf="consentement.consentementPDF">
+                        <a (click)="openFile(consentement.consentementPDFContentType, consentement.consentementPDF)">
+                            <img [src]="'data:' + consentement.consentementPDFContentType + ';base64,' + consentement.consentementPDF" style="max-width: 100%;" alt="consentement image"/>
+                        </a>
+                        {{consentement.consentementPDFContentType}}, {{byteSize(consentement.consentementPDF)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.dateSupprimerConsentement">Date Supprimer Consentement</span></dt>
+                <dd>
+                    <span>{{consentement.dateSupprimerConsentement}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.consentement.patient">Patient</span></dt>
+                <dd>
+                    <div *ngIf="consentement.patient">
+                        <a [routerLink]="['/patient', consentement.patient?.id, 'view']">{{consentement.patient?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/consentement', consentement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

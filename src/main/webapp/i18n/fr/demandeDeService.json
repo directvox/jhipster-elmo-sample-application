@@ -1,0 +1,32 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "demandeDeService": {
+      "home": {
+        "title": "DemandeDeServices",
+        "createLabel": "Créer un nouveau Demande De Service",
+        "createOrEditLabel": "Créer ou éditer un Demande De Service",
+        "notFound": "Aucun Demande De Service trouvé"
+      },
+      "created": "Un nouveau Demande De Service a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Demande De Service avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Demande De Service avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Demande De Service {{ id }} ?"
+      },
+      "detail": {
+        "title": "Demande De Service"
+      },
+      "statut": "Statut",
+      "dateCreationDemande": "Date Creation Demande",
+      "lanque": "Lanque",
+      "priorite": "Priorite",
+      "modalite": "Modalite",
+      "typeActivite": "Type Activite",
+      "patient": "Patient",
+      "destinataire": "Destinataire",
+      "specialiteClinique": "Specialite Clinique",
+      "ensembre": "Ensembre",
+      "formulaireEvaluation": "Formulaire Evaluation"
+    }
+  }
+}

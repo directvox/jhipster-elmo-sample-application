@@ -1,0 +1,9 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "TypeConsentement": {
+      "null": "",
+      "DEMANDE": "DEMANDE",
+      "DSQ": "DSQ"
+    }
+  }
+}

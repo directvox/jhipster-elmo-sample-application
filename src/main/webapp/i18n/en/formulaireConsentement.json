@@ -1,0 +1,29 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "formulaireConsentement": {
+      "home": {
+        "title": "Formulaire Consentements",
+        "createLabel": "Create a new Formulaire Consentement",
+        "createOrEditLabel": "Create or edit a Formulaire Consentement",
+        "notFound": "No Formulaire Consentements found"
+      },
+      "created": "A new Formulaire Consentement is created with identifier {{ param }}",
+      "updated": "A Formulaire Consentement is updated with identifier {{ param }}",
+      "deleted": "A Formulaire Consentement is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Formulaire Consentement {{ id }}?"
+      },
+      "detail": {
+        "title": "Formulaire Consentement"
+      },
+      "idFormulaire": "Id Formulaire",
+      "nomFormulaire": "Nom Formulaire",
+      "dateFormulaire": "Date Formulaire",
+      "actif": "Actif",
+      "formulaireConsentementTexte": "Formulaire Consentement Texte",
+      "formulaireConsentementPDF": "Formulaire Consentement PDF",
+      "formulaireConsentementURL": "Formulaire Consentement URL",
+      "consentement": "Consentement"
+    }
+  }
+}

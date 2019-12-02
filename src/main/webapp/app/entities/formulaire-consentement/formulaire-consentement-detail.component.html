@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="formulaireConsentement">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.detail.title">Formulaire Consentement</span> {{formulaireConsentement.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.idFormulaire">Id Formulaire</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.idFormulaire}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.nomFormulaire">Nom Formulaire</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.nomFormulaire}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.dateFormulaire">Date Formulaire</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.dateFormulaire}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.actif">Actif</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.actif}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementTexte">Formulaire Consentement Texte</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.formulaireConsentementTexte}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementPDF">Formulaire Consentement PDF</span></dt>
+                <dd>
+                    <div *ngIf="formulaireConsentement.formulaireConsentementPDF">
+                        <a (click)="openFile(formulaireConsentement.formulaireConsentementPDFContentType, formulaireConsentement.formulaireConsentementPDF)">
+                            <img [src]="'data:' + formulaireConsentement.formulaireConsentementPDFContentType + ';base64,' + formulaireConsentement.formulaireConsentementPDF" style="max-width: 100%;" alt="formulaireConsentement image"/>
+                        </a>
+                        {{formulaireConsentement.formulaireConsentementPDFContentType}}, {{byteSize(formulaireConsentement.formulaireConsentementPDF)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.formulaireConsentementURL">Formulaire Consentement URL</span></dt>
+                <dd>
+                    <span>{{formulaireConsentement.formulaireConsentementURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.formulaireConsentement.consentement">Consentement</span></dt>
+                <dd>
+                    <div *ngIf="formulaireConsentement.consentement">
+                        <a [routerLink]="['/consentement', formulaireConsentement.consentement?.id, 'view']">{{formulaireConsentement.consentement?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/formulaire-consentement', formulaireConsentement.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

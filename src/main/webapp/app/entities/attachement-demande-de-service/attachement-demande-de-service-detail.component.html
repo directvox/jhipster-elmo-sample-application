@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="attachementDemandeDeService">
+            <h2><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.detail.title">Attachement Demande De Service</span> {{attachementDemandeDeService.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.nom">Nom</span></dt>
+                <dd>
+                    <span>{{attachementDemandeDeService.nom}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.fichier">Fichier</span></dt>
+                <dd>
+                    <div *ngIf="attachementDemandeDeService.fichier">
+                        <a (click)="openFile(attachementDemandeDeService.fichierContentType, attachementDemandeDeService.fichier)">
+                            <img [src]="'data:' + attachementDemandeDeService.fichierContentType + ';base64,' + attachementDemandeDeService.fichier" style="max-width: 100%;" alt="attachementDemandeDeService image"/>
+                        </a>
+                        {{attachementDemandeDeService.fichierContentType}}, {{byteSize(attachementDemandeDeService.fichier)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.refExterne">Ref Externe</span></dt>
+                <dd>
+                    <span>{{attachementDemandeDeService.refExterne}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.note">Note</span></dt>
+                <dd>
+                    <span>{{attachementDemandeDeService.note}}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterElmoSampleApplicationApp.attachementDemandeDeService.ref">Ref</span></dt>
+                <dd>
+                    <div *ngIf="attachementDemandeDeService.ref">
+                        <a [routerLink]="['/demande-de-service', attachementDemandeDeService.ref?.id, 'view']">{{attachementDemandeDeService.ref?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/attachement-demande-de-service', attachementDemandeDeService.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

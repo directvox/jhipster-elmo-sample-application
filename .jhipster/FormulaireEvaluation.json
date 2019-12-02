@@ -1,0 +1,29 @@
+{
+    "name": "FormulaireEvaluation",
+    "fields": [
+        {
+            "fieldName": "typeFormulaire",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "demandeDeService",
+            "otherEntityRelationshipName": "formulaireEvaluation",
+            "relationshipName": "demandeDeService",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191202215147",
+    "entityTableName": "formulaire_evaluation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

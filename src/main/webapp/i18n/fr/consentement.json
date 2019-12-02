@@ -1,0 +1,27 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "consentement": {
+      "home": {
+        "title": "Consentements",
+        "createLabel": "Créer un nouveau Consentement",
+        "createOrEditLabel": "Créer ou éditer un Consentement",
+        "notFound": "Aucun Consentement trouvé"
+      },
+      "created": "Un nouveau Consentement a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Consentement avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Consentement avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Consentement {{ id }} ?"
+      },
+      "detail": {
+        "title": "Consentement"
+      },
+      "typeConsentement": "Type Consentement",
+      "dateConsentement": "Date Consentement",
+      "consentementRecherche": "Consentement Recherche",
+      "consentementPDF": "Consentement PDF",
+      "dateSupprimerConsentement": "Date Supprimer Consentement",
+      "patient": "Patient"
+    }
+  }
+}

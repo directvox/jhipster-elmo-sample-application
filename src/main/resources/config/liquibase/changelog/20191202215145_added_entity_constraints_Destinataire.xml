@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Destinataire.
+    -->
+    <changeSet id="20191202215145-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="ensembre_destinataire_id"
+                                 baseTableName="destinataire"
+                                 constraintName="fk_destinataire_ensembre_destinataire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="intervenant"/>
+
+        <addForeignKeyConstraint baseColumnNames="destinataire_id"
+                                 baseTableName="destinataire_spec_clinique"
+                                 constraintName="fk_destinataire_spec_clinique_destinataire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="destinataire"/>
+
+        <addForeignKeyConstraint baseColumnNames="spec_clinique_id"
+                                 baseTableName="destinataire_spec_clinique"
+                                 constraintName="fk_destinataire_spec_clinique_spec_clinique_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="spec_clinique"/>
+        
+    </changeSet>
+</databaseChangeLog>

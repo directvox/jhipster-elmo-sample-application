@@ -1,0 +1,36 @@
+{
+    "name": "Destinataire",
+    "fields": [
+        {
+            "fieldName": "nomDestinataire",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "intervenant",
+            "otherEntityRelationshipName": "destinataire",
+            "relationshipName": "ensembreDestinataire",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "specClinique",
+            "otherEntityRelationshipName": "destinataire",
+            "relationshipName": "specClinique",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191202215145",
+    "entityTableName": "destinataire",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

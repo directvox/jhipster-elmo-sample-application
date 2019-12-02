@@ -1,0 +1,100 @@
+{
+    "name": "DemandeDeService",
+    "fields": [
+        {
+            "fieldName": "statut",
+            "fieldType": "StatutDemande",
+            "fieldValues": "ENCOURS,TERMINE,REFUSE,ATTENTE,ANNULE"
+        },
+        {
+            "fieldName": "dateCreationDemande",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "lanque",
+            "fieldType": "Language",
+            "fieldValues": "FRANCAIS,ANGLAIS",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "priorite",
+            "fieldType": "Priorite",
+            "fieldValues": "URGENT,IMPORTANT,NORMAL,INCONNU",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modalite",
+            "fieldType": "Modalite",
+            "fieldValues": "DIFERE,REEL,REEL_AVEC_PATIENT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "typeActivite",
+            "fieldType": "TypeActivite",
+            "fieldValues": "DISCUSSION,DEMANDE_OPINION,TELECONSULTATION,DEMANDE_DE_TRANSFERT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "patient",
+            "otherEntityRelationshipName": "demandeDeService",
+            "relationshipName": "patient",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "destinataire",
+            "otherEntityRelationshipName": "demandeDeService",
+            "relationshipName": "destinataire",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "specClinique",
+            "otherEntityRelationshipName": "demandeDeService",
+            "relationshipName": "specialiteClinique",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "demandeDeService",
+            "otherEntityRelationshipName": "demandeDeService",
+            "relationshipName": "ensembre",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "formulaireEvaluation",
+            "otherEntityRelationshipName": "demandeDeService",
+            "relationshipName": "formulaireEvaluation",
+            "otherEntityField": "idFormulaire",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191202215142",
+    "entityTableName": "demande_de_service",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

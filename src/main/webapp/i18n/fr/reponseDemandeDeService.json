@@ -1,0 +1,23 @@
+{
+  "jhipsterElmoSampleApplicationApp": {
+    "reponseDemandeDeService": {
+      "home": {
+        "title": "ReponseDemandeDeServices",
+        "createLabel": "Créer un nouveau Reponse Demande De Service",
+        "createOrEditLabel": "Créer ou éditer un Reponse Demande De Service",
+        "notFound": "Aucun Reponse Demande De Service trouvé"
+      },
+      "created": "Un nouveau Reponse Demande De Service a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Reponse Demande De Service avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Reponse Demande De Service avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Reponse Demande De Service {{ id }} ?"
+      },
+      "detail": {
+        "title": "Reponse Demande De Service"
+      },
+      "dateReponse": "Date Reponse",
+      "demandeDeService": "Demande De Service"
+    }
+  }
+}
